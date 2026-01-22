@@ -38,9 +38,6 @@ async def process_video(request: VideoRequest):
         # Extract transcript
         transcript = extract_transcript(video_id)
         
-        # if not transcript.strip():
-        #     raise HTTPException(status_code=400, detail="Empty transcript extracted")
-        
         # Create vector store
         vector_store = create_vector_store(transcript, video_id)
         

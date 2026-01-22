@@ -3,7 +3,6 @@ from youtube_transcript_api import TranscriptsDisabled, NoTranscriptFound
 from langchain_community.vectorstores import FAISS
 from langchain_core.prompts import PromptTemplate
 from langchain_huggingface import HuggingFaceEmbeddings
-from langchain_groq import ChatGroq
 from langchain_openai import ChatOpenAI
 from dotenv import load_dotenv
 import logging
@@ -68,20 +67,7 @@ def extract_transcript(video_id: str) -> str:
 
 def create_vector_store(docs: str, video_id: str) -> FAISS:
     """Create FAISS vector store from documents"""
-    # try:
-        # Split documents into chunks
-        # splitter = RecursiveCharacterTextSplitter(
-        #     chunk_size=1000,
-        #     chunk_overlap=200,
-        #     length_function=len,
-        # )
-        
-        # chunks = splitter.create_documents([docs])
-        # logger.info(f"Created {len(chunks)} chunks for video {video_id}")
-        
-        # # Create vector store
-        # if embeddings is None:
-        #     raise HTTPException(status_code=500, detail="Embeddings model not available")
+    
     try:
         if embeddings is None:
             logger.error("Embeddings model is not loaded")
