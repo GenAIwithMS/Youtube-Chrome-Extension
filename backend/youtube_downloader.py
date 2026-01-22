@@ -2,16 +2,6 @@ import yt_dlp
 import os
 from pathlib import Path
 
-# def download_video(url: str, output_path: str = "downloads", progress_hook=None) -> dict:
-#     # ... (your existing code)
-#     ydl_opts = {
-#         'format': 'best[height<=720]',
-#         'outtmpl': f'{output_path}/%(title)s.%(ext)s',
-#         'progress_hooks': [progress_hook] if progress_hook else [], # <-- ADD THIS
-#     }
-#     # ... (the rest of the function)
-
-
 def download_video(url: str, output_path: str = "downloads",progress_hook=None) -> dict:
     """
     Download video from YouTube URL
@@ -55,19 +45,6 @@ def download_video(url: str, output_path: str = "downloads",progress_hook=None) 
             'error': str(e)
         }
     
-# def download_audio(url: str, output_path: str = "downloads", progress_hook=None) -> dict:
-#     # ... (your existing code)
-#     ydl_opts = {
-#         'format': 'bestaudio/best',
-#         'outtmpl': f'{output_path}/%(title)s.%(ext)s',
-#         'postprocessors': [{
-#             'key': 'FFmpegExtractAudio',
-#             'preferredcodec': 'mp3',
-#             'preferredquality': '192',
-#         }],
-#         'progress_hooks': [progress_hook] if progress_hook else [], # <-- ADD THIS
-#     }
-
 def download_audio(url: str, output_path: str = "downloads", progress_hook=None) -> dict:
     """
     Download audio from YouTube URL
@@ -139,19 +116,3 @@ def download_audio(url: str, output_path: str = "downloads", progress_hook=None)
             'status': 'error',
             'error': str(e)
         }
-
-# # Test function
-# def test_download():
-#     """Test the download functions"""
-#     test_url = "https://youtu.be/0OgUxSShtKk?si=pVHRMO1coj2ndNw7"  # Rick Roll for testing
-    
-#     print("Testing video download...")
-#     result = download_video(test_url)
-#     print(f"Video download result: {result}")
-    
-#     print("\nTesting audio download...")
-#     result = download_audio(test_url)
-#     print(f"Audio download result: {result}")
-
-# if __name__ == "__main__":
-#     test_download()
