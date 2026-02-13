@@ -6,9 +6,11 @@ from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_openai import ChatOpenAI
 from dotenv import load_dotenv
 import logging
+import os
 
 load_dotenv()
 
+openaiapi = os.getenv("OPENAI_API_KEY")
 logger = logging.getLogger(__name__)
 
 # Initialize embeddings model (load once for efficiency)
@@ -21,10 +23,10 @@ except Exception as e:
 
 # Initialize LLM
 try:
-    model = ChatOpenAI(model_name="openai/gpt-oss-120b",base_url="https://api.canopywave.io/v1")
-    logger.info("ChatGroq model initialized successfully")
+    model = ChatOpenAI(model_name="deepseek/deepseek-chat-v3.2",base_url="https://api.canopywave.io/v1",api_key=openaiapi)
+    logger.info("ChatOpenAI model initialized successfully")
 except Exception as e:
-    logger.error(f"Failed to initialize ChatGroq model: {e}")
+    logger.error(f"Failed to initialize ChatOpenAI model: {e}")
     model = None
 
 # Prompt template
@@ -32,6 +34,7 @@ prompt = PromptTemplate(
     template="""You are a helpful assistant that answers questions based on YouTube video transcripts. 
     
     Instructions:
+    - Always give answer in english regardless of the language of the question. If the question is not in english, translate it to english before answering. if user specified language in question, answer in that language.
     - Provide accurate answers based only on the given transcript
     - If the transcript doesn't contain relevant information, say so clearly
     - Include specific details and examples from the video when possible
