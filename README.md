@@ -8,7 +8,7 @@ A complete solution for chatting with YouTube video content using Retrieval-Augm
 - **Modular Architecture**: Clean separation with app factory pattern
 - **Advanced RAG Pipeline**: FAISS vector store with HuggingFace embeddings (sentence-transformers/all-MiniLM-L6-v2)
 - **YouTube Integration**: Multi-language transcript extraction (English, Hindi, Bengali, Chinese)
-- **LLM Integration**: Powered by Canopy Wave API with gpt-oss-120b model
+- **LLM Integration**: Powered by Canopy Wave API with deepseek/deepseek-chat-v3.2
 - **RESTful API**: Well-structured endpoints with Pydantic schemas
 - **Smart Chunking**: RecursiveCharacterTextSplitter (1000 chars, 200 overlap)
 - **Error Handling**: Comprehensive error handling and logging
